@@ -1,3 +1,4 @@
 streamlit
 opencv-python
 tensorflow
+libgl1-mesa-glx
