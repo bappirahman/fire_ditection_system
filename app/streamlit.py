@@ -3,8 +3,9 @@ import cv2
 import time
 import tensorflow as tf
 import os
+import numpy as np
 
-model_path = str(os.path.abspath('../model/fire_classifier.h5').replace('\\', '/'))
+model_path = str(os.path.abspath('./model/fire_classifier.h5').replace('\\', '/'))
 
 model = tf.keras.models.load_model(model_path)
 
@@ -38,9 +39,9 @@ def main():
         # Update the placeholders
         camera_placeholder.image(frame, channels="BGR", caption="Live Camera Feed", use_column_width=True)
         if prediction > 0.6:
-            prediction_text = 'fire'
-        else:
             prediction_text = 'not fire'
+        else:
+            prediction_text = 'fire'
         prediction_placeholder.text(prediction_text)
 
         # Add a short sleep for smoother display
